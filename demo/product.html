@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eagle Shop - Product</title>
+  <meta name="description" content="Sample product details" />
+  <meta property="og:title" content="Eagle Shop - Product" />
+  <meta property="og:description" content="Sample product details" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com/product" />
+  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Eagle+Shop" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            dark: '#42342F',
+            light: '#E8E8ED',
+            accent: '#E39D4C'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+<div id="header"></div>
+<main class="max-w-6xl mx-auto p-4">
+  <div class="grid md:grid-cols-2 gap-6">
+    <img src="/files/vntgpc.png" alt="Sample product" class="w-full h-auto" />
+    <div>
+      <h1 class="text-3xl mb-4">Sample Product</h1>
+      <p class="mb-4">High quality sample product.</p>
+      <p class="text-2xl mb-4">$19.99</p>
+      <button id="add-to-cart" class="btn-primary">Add to Cart</button>
+    </div>
+  </div>
+  <div class="grid md:grid-cols-2 gap-6">
+    <img src="/files/smart-glasses.png" alt="Sample product" class="w-full h-auto" />
+    <div>
+      <h1 class="text-3xl mb-4">Sample Product</h1>
+      <p class="mb-4">High quality sample product.</p>
+      <p class="text-2xl mb-4">$19.99</p>
+      <button id="add-to-cart" class="btn-primary">Add to Cart</button>
+    </div>
+  </div>
+</main>
+<div id="footer"></div>
+<script src="js/app.js"></script>
+</body>
+</html>

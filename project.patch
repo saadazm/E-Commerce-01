@@ -1,0 +1,657 @@
+diff --git a/demo/cart.html b/demo/cart.html
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8" />
++  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
++  <title>Eagle Shop - Cart</title>
++  <meta name="description" content="Items in your cart" />
++  <meta property="og:title" content="Eagle Shop - Cart" />
++  <meta property="og:description" content="Items in your cart" />
++  <meta property="og:type" content="website" />
++  <meta property="og:url" content="https://example.com/cart" />
++  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Eagle+Shop" />
++  <script src="https://cdn.tailwindcss.com"></script>
++  <script>
++    tailwind.config = {
++      theme: {
++        extend: {
++          colors: {
++            dark: '#42342F',
++            light: '#E8E8ED',
++            accent: '#E39D4C'
++          }
++        }
++      }
++    }
++  </script>
++  <link rel="stylesheet" href="styles/style.css" />
++</head>
++<body>
++<div id="header"></div>
++<main class="max-w-6xl mx-auto p-4">
++  <h1 class="text-3xl mb-4">Your Cart</h1>
++  <ul id="cart-items" class="mb-4"></ul>
++  <a href="checkout.html" class="btn-primary">Checkout</a>
++</main>
++<div id="footer"></div>
++<script src="js/app.js"></script>
++</body>
++</html>
+diff --git a/demo/checkout.html b/demo/checkout.html
+new file mode 100644
+index 0000000000000000000000000000000000000000..273ca21f5ee4f6678e03f3f61dca4bab75012690
+--- /dev/null
++++ b/demo/checkout.html
+@@ -0,0 +1,52 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8" />
++  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
++  <title>Eagle Shop - Checkout</title>
++  <meta name="description" content="Checkout form" />
++  <meta property="og:title" content="Eagle Shop - Checkout" />
++  <meta property="og:description" content="Checkout form" />
++  <meta property="og:type" content="website" />
++  <meta property="og:url" content="https://example.com/checkout" />
++  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Eagle+Shop" />
++  <script src="https://cdn.tailwindcss.com"></script>
++  <script>
++    tailwind.config = {
++      theme: {
++        extend: {
++          colors: {
++            dark: '#42342F',
++            light: '#E8E8ED',
++            accent: '#E39D4C'
++          }
++        }
++      }
++    }
++  </script>
++  <link rel="stylesheet" href="styles/style.css" />
++</head>
++<body>
++<div id="header"></div>
++<main class="max-w-2xl mx-auto p-4">
++  <h1 class="text-3xl mb-4">Checkout</h1>
++  <form class="space-y-4">
++    <div>
++      <label for="name" class="block mb-1">Name</label>
++      <input id="name" type="text" class="w-full p-2 border rounded" required />
++    </div>
++    <div>
++      <label for="email" class="block mb-1">Email</label>
++      <input id="email" type="email" class="w-full p-2 border rounded" required />
++    </div>
++    <div>
++      <label for="address" class="block mb-1">Address</label>
++      <textarea id="address" class="w-full p-2 border rounded" required></textarea>
++    </div>
++    <button type="submit" class="btn-primary">Place Order</button>
++  </form>
++</main>
++<div id="footer"></div>
++<script src="js/app.js"></script>
++</body>
++</html>
+diff --git a/demo/components/footer.html b/demo/components/footer.html
+new file mode 100644
+index 0000000000000000000000000000000000000000..d7759af017c4b8068c92cb3d71701a0e10ddd708
+--- /dev/null
++++ b/demo/components/footer.html
+@@ -0,0 +1,5 @@
++<footer class="bg-dark text-light mt-8">
++  <div class="max-w-6xl mx-auto p-4 text-center">
++    <p>&copy; <span id="year"></span> Eagle Shop</p>
++  </div>
++</footer>
+diff --git a/demo/components/header.html b/demo/components/header.html
+new file mode 100644
+index 0000000000000000000000000000000000000000..df5b92f7f2007e3743a099f2f2ae1801db49e7f5
+--- /dev/null
++++ b/demo/components/header.html
+@@ -0,0 +1,9 @@
++<header class="bg-dark text-light">
++  <nav class="max-w-6xl mx-auto flex items-center justify-between p-4">
++    <a href="index.html" class="text-2xl font-bold">Eagle Shop</a>
++    <ul class="flex space-x-4">
++      <li><a href="product.html" class="hover:text-accent">Products</a></li>
++      <li><a href="cart.html" class="hover:text-accent">Cart (<span id="cart-count">0</span>)</a></li>
++    </ul>
++  </nav>
++</header>
+diff --git a/demo/index.html b/demo/index.html
+new file mode 100644
+index 0000000000000000000000000000000000000000..5fcbdfab7a62042354d44fbdaf20bbc9689d492b
+--- /dev/null
++++ b/demo/index.html
+@@ -0,0 +1,49 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8" />
++  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
++  <title>Eagle Shop - Home</title>
++  <meta name="description" content="Accessible e-commerce template home page" />
++  <meta property="og:title" content="Eagle Shop - Home" />
++  <meta property="og:description" content="Accessible e-commerce template home page" />
++  <meta property="og:type" content="website" />
++  <meta property="og:url" content="https://example.com/" />
++  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Eagle+Shop" />
++  <script src="https://cdn.tailwindcss.com"></script>
++  <script>
++    tailwind.config = {
++      theme: {
++        extend: {
++          colors: {
++            dark: '#42342F',
++            light: '#E8E8ED',
++            accent: '#E39D4C'
++          }
++        }
++      }
++    }
++  </script>
++  <link rel="stylesheet" href="styles/style.css" />
++</head>
++<body>
++<div id="header"></div>
++<main class="max-w-6xl mx-auto p-4">
++  <section class="text-center py-16">
++    <h1 class="text-4xl font-bold mb-4">Welcome to Eagle Shop</h1>
++    <p class="mb-6">Your one-stop shop for sample goods.</p>
++    <a href="product.html" class="btn-primary inline-block">Shop Now</a>
++  </section>
++  <section class="grid md:grid-cols-3 gap-6">
++    <article class="bg-white p-4 rounded shadow">
++      <img src="https://via.placeholder.com/400x300" alt="Sample product" class="mb-4 w-full h-auto" />
++      <h2 class="text-xl mb-2">Sample Product</h2>
++      <p class="mb-2">$19.99</p>
++      <a href="product.html" class="text-accent hover:underline">View Details</a>
++    </article>
++  </section>
++</main>
++<div id="footer"></div>
++<script src="js/app.js"></script>
++</body>
++</html>
+diff --git a/demo/js/app.js b/demo/js/app.js
+new file mode 100644
+index 0000000000000000000000000000000000000000..b6867b4900fd69e6698db4e7faa650540542c407
+--- /dev/null
++++ b/demo/js/app.js
+@@ -0,0 +1,66 @@
++const componentPath = window.location.pathname.includes('/src/pages/') ? '../components/' : 'components/';
++
++async function loadComponent(name, selector) {
++  const res = await fetch(`${componentPath}${name}.html`);
++  const html = await res.text();
++  document.querySelector(selector).innerHTML = html;
++}
++
++function getCart() {
++  return JSON.parse(localStorage.getItem('cart') || '[]');
++}
++
++function saveCart(cart) {
++  localStorage.setItem('cart', JSON.stringify(cart));
++}
++
++function addToCart(item) {
++  const cart = getCart();
++  cart.push(item);
++  saveCart(cart);
++  updateCartCount();
++}
++
++function updateCartCount() {
++  const count = getCart().length;
++  document.querySelectorAll('#cart-count').forEach(el => (el.textContent = count));
++}
++
++function renderCart() {
++  const items = getCart();
++  const container = document.getElementById('cart-items');
++  if (!container) return;
++  if (items.length === 0) {
++    container.innerHTML = '<p>Your cart is empty.</p>';
++    return;
++  }
++  container.innerHTML = items
++    .map(
++      (item, idx) => `<li class="flex justify-between border-b py-2">
++        <span>${item.name}</span>
++        <span>$${item.price.toFixed(2)}</span>
++        <button class="text-red-600" data-index="${idx}">Remove</button>
++      </li>`
++    )
++    .join('');
++}
++
++document.addEventListener('DOMContentLoaded', () => {
++  loadComponent('header', '#header').then(updateCartCount);
++  loadComponent('footer', '#footer');
++  document.getElementById('add-to-cart')?.addEventListener('click', () => {
++    addToCart({ id: 1, name: 'Sample Product', price: 19.99 });
++  });
++  renderCart();
++  document.getElementById('cart-items')?.addEventListener('click', e => {
++    if (e.target.matches('button[data-index]')) {
++      const cart = getCart();
++      cart.splice(e.target.dataset.index, 1);
++      saveCart(cart);
++      renderCart();
++      updateCartCount();
++    }
++  });
++  const year = document.getElementById('year');
++  if (year) year.textContent = new Date().getFullYear();
++});
+diff --git a/demo/product.html b/demo/product.html
+new file mode 100644
+index 0000000000000000000000000000000000000000..bd50ca3bcd02eef9032c1ef31cbaefd0bf30c9ef
+--- /dev/null
++++ b/demo/product.html
+@@ -0,0 +1,45 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8" />
++  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
++  <title>Eagle Shop - Product</title>
++  <meta name="description" content="Sample product details" />
++  <meta property="og:title" content="Eagle Shop - Product" />
++  <meta property="og:description" content="Sample product details" />
++  <meta property="og:type" content="website" />
++  <meta property="og:url" content="https://example.com/product" />
++  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Eagle+Shop" />
++  <script src="https://cdn.tailwindcss.com"></script>
++  <script>
++    tailwind.config = {
++      theme: {
++        extend: {
++          colors: {
++            dark: '#42342F',
++            light: '#E8E8ED',
++            accent: '#E39D4C'
++          }
++        }
++      }
++    }
++  </script>
++  <link rel="stylesheet" href="styles/style.css" />
++</head>
++<body>
++<div id="header"></div>
++<main class="max-w-6xl mx-auto p-4">
++  <div class="grid md:grid-cols-2 gap-6">
++    <img src="https://via.placeholder.com/600x400" alt="Sample product" class="w-full h-auto" />
++    <div>
++      <h1 class="text-3xl mb-4">Sample Product</h1>
++      <p class="mb-4">High quality sample product.</p>
++      <p class="text-2xl mb-4">$19.99</p>
++      <button id="add-to-cart" class="btn-primary">Add to Cart</button>
++    </div>
++  </div>
++</main>
++<div id="footer"></div>
++<script src="js/app.js"></script>
++</body>
++</html>
+diff --git a/demo/styles/style.css b/demo/styles/style.css
+new file mode 100644
+index 0000000000000000000000000000000000000000..9867f56daa55da4926400c85c0b0c2e4a9ce5bbd
+--- /dev/null
++++ b/demo/styles/style.css
+@@ -0,0 +1,18 @@
++:root {
++  --color-dark: #42342F;
++  --color-light: #E8E8ED;
++  --color-accent: #E39D4C;
++  --color-white: #FFFFFF;
++}
++
++body {
++  background-color: var(--color-light);
++  color: var(--color-dark);
++}
++
++.btn-primary {
++  background-color: var(--color-accent);
++  color: var(--color-white);
++  padding: 0.5rem 1rem;
++  border-radius: 0.25rem;
++}
+diff --git a/src/components/app.js b/src/components/app.js
+new file mode 100644
+index 0000000000000000000000000000000000000000..b6867b4900fd69e6698db4e7faa650540542c407
+--- /dev/null
++++ b/src/components/app.js
+@@ -0,0 +1,66 @@
++const componentPath = window.location.pathname.includes('/src/pages/') ? '../components/' : 'components/';
++
++async function loadComponent(name, selector) {
++  const res = await fetch(`${componentPath}${name}.html`);
++  const html = await res.text();
++  document.querySelector(selector).innerHTML = html;
++}
++
++function getCart() {
++  return JSON.parse(localStorage.getItem('cart') || '[]');
++}
++
++function saveCart(cart) {
++  localStorage.setItem('cart', JSON.stringify(cart));
++}
++
++function addToCart(item) {
++  const cart = getCart();
++  cart.push(item);
++  saveCart(cart);
++  updateCartCount();
++}
++
++function updateCartCount() {
++  const count = getCart().length;
++  document.querySelectorAll('#cart-count').forEach(el => (el.textContent = count));
++}
++
++function renderCart() {
++  const items = getCart();
++  const container = document.getElementById('cart-items');
++  if (!container) return;
++  if (items.length === 0) {
++    container.innerHTML = '<p>Your cart is empty.</p>';
++    return;
++  }
++  container.innerHTML = items
++    .map(
++      (item, idx) => `<li class="flex justify-between border-b py-2">
++        <span>${item.name}</span>
++        <span>$${item.price.toFixed(2)}</span>
++        <button class="text-red-600" data-index="${idx}">Remove</button>
++      </li>`
++    )
++    .join('');
++}
++
++document.addEventListener('DOMContentLoaded', () => {
++  loadComponent('header', '#header').then(updateCartCount);
++  loadComponent('footer', '#footer');
++  document.getElementById('add-to-cart')?.addEventListener('click', () => {
++    addToCart({ id: 1, name: 'Sample Product', price: 19.99 });
++  });
++  renderCart();
++  document.getElementById('cart-items')?.addEventListener('click', e => {
++    if (e.target.matches('button[data-index]')) {
++      const cart = getCart();
++      cart.splice(e.target.dataset.index, 1);
++      saveCart(cart);
++      renderCart();
++      updateCartCount();
++    }
++  });
++  const year = document.getElementById('year');
++  if (year) year.textContent = new Date().getFullYear();
++});
+diff --git a/src/components/footer.html b/src/components/footer.html
+new file mode 100644
+index 0000000000000000000000000000000000000000..d7759af017c4b8068c92cb3d71701a0e10ddd708
+--- /dev/null
++++ b/src/components/footer.html
+@@ -0,0 +1,5 @@
++<footer class="bg-dark text-light mt-8">
++  <div class="max-w-6xl mx-auto p-4 text-center">
++    <p>&copy; <span id="year"></span> Eagle Shop</p>
++  </div>
++</footer>
+diff --git a/src/components/header.html b/src/components/header.html
+new file mode 100644
+index 0000000000000000000000000000000000000000..df5b92f7f2007e3743a099f2f2ae1801db49e7f5
+--- /dev/null
++++ b/src/components/header.html
+@@ -0,0 +1,9 @@
++<header class="bg-dark text-light">
++  <nav class="max-w-6xl mx-auto flex items-center justify-between p-4">
++    <a href="index.html" class="text-2xl font-bold">Eagle Shop</a>
++    <ul class="flex space-x-4">
++      <li><a href="product.html" class="hover:text-accent">Products</a></li>
++      <li><a href="cart.html" class="hover:text-accent">Cart (<span id="cart-count">0</span>)</a></li>
++    </ul>
++  </nav>
++</header>
+diff --git a/src/pages/cart.html b/src/pages/cart.html
+new file mode 100644
+index 0000000000000000000000000000000000000000..e256e97e6c1c05d0baedd726768da00f597084d4
+--- /dev/null
++++ b/src/pages/cart.html
+@@ -0,0 +1,39 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8" />
++  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
++  <title>Eagle Shop - Cart</title>
++  <meta name="description" content="Items in your cart" />
++  <meta property="og:title" content="Eagle Shop - Cart" />
++  <meta property="og:description" content="Items in your cart" />
++  <meta property="og:type" content="website" />
++  <meta property="og:url" content="https://example.com/cart" />
++  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Eagle+Shop" />
++  <script src="https://cdn.tailwindcss.com"></script>
++  <script>
++    tailwind.config = {
++      theme: {
++        extend: {
++          colors: {
++            dark: '#42342F',
++            light: '#E8E8ED',
++            accent: '#E39D4C'
++          }
++        }
++      }
++    }
++  </script>
++  <link rel="stylesheet" href="../styles/style.css" />
++</head>
++<body>
++<div id="header"></div>
++<main class="max-w-6xl mx-auto p-4">
++  <h1 class="text-3xl mb-4">Your Cart</h1>
++  <ul id="cart-items" class="mb-4"></ul>
++  <a href="checkout.html" class="btn-primary">Checkout</a>
++</main>
++<div id="footer"></div>
++<script src="../components/app.js"></script>
++</body>
++</html>
+diff --git a/src/pages/checkout.html b/src/pages/checkout.html
+new file mode 100644
+index 0000000000000000000000000000000000000000..fa5e4d30ee5e558c29a4a9308bfeb35531aa2fc0
+--- /dev/null
++++ b/src/pages/checkout.html
+@@ -0,0 +1,52 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8" />
++  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
++  <title>Eagle Shop - Checkout</title>
++  <meta name="description" content="Checkout form" />
++  <meta property="og:title" content="Eagle Shop - Checkout" />
++  <meta property="og:description" content="Checkout form" />
++  <meta property="og:type" content="website" />
++  <meta property="og:url" content="https://example.com/checkout" />
++  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Eagle+Shop" />
++  <script src="https://cdn.tailwindcss.com"></script>
++  <script>
++    tailwind.config = {
++      theme: {
++        extend: {
++          colors: {
++            dark: '#42342F',
++            light: '#E8E8ED',
++            accent: '#E39D4C'
++          }
++        }
++      }
++    }
++  </script>
++  <link rel="stylesheet" href="../styles/style.css" />
++</head>
++<body>
++<div id="header"></div>
++<main class="max-w-2xl mx-auto p-4">
++  <h1 class="text-3xl mb-4">Checkout</h1>
++  <form class="space-y-4">
++    <div>
++      <label for="name" class="block mb-1">Name</label>
++      <input id="name" type="text" class="w-full p-2 border rounded" required />
++    </div>
++    <div>
++      <label for="email" class="block mb-1">Email</label>
++      <input id="email" type="email" class="w-full p-2 border rounded" required />
++    </div>
++    <div>
++      <label for="address" class="block mb-1">Address</label>
++      <textarea id="address" class="w-full p-2 border rounded" required></textarea>
++    </div>
++    <button type="submit" class="btn-primary">Place Order</button>
++  </form>
++</main>
++<div id="footer"></div>
++<script src="../components/app.js"></script>
++</body>
++</html>
+diff --git a/src/pages/home.html b/src/pages/home.html
+new file mode 100644
+index 0000000000000000000000000000000000000000..777fdbf4177b58b049ad7d2121bd18b5edfd5bb2
+--- /dev/null
++++ b/src/pages/home.html
+@@ -0,0 +1,49 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8" />
++  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
++  <title>Eagle Shop - Home</title>
++  <meta name="description" content="Accessible e-commerce template home page" />
++  <meta property="og:title" content="Eagle Shop - Home" />
++  <meta property="og:description" content="Accessible e-commerce template home page" />
++  <meta property="og:type" content="website" />
++  <meta property="og:url" content="https://example.com/" />
++  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Eagle+Shop" />
++  <script src="https://cdn.tailwindcss.com"></script>
++  <script>
++    tailwind.config = {
++      theme: {
++        extend: {
++          colors: {
++            dark: '#42342F',
++            light: '#E8E8ED',
++            accent: '#E39D4C'
++          }
++        }
++      }
++    }
++  </script>
++  <link rel="stylesheet" href="../styles/style.css" />
++</head>
++<body>
++<div id="header"></div>
++<main class="max-w-6xl mx-auto p-4">
++  <section class="text-center py-16">
++    <h1 class="text-4xl font-bold mb-4">Welcome to Eagle Shop</h1>
++    <p class="mb-6">Your one-stop shop for sample goods.</p>
++    <a href="product.html" class="btn-primary inline-block">Shop Now</a>
++  </section>
++  <section class="grid md:grid-cols-3 gap-6">
++    <article class="bg-white p-4 rounded shadow">
++      <img src="https://via.placeholder.com/400x300" alt="Sample product" class="mb-4 w-full h-auto" />
++      <h2 class="text-xl mb-2">Sample Product</h2>
++      <p class="mb-2">$19.99</p>
++      <a href="product.html" class="text-accent hover:underline">View Details</a>
++    </article>
++  </section>
++</main>
++<div id="footer"></div>
++<script src="../components/app.js"></script>
++</body>
++</html>
+diff --git a/src/pages/product.html b/src/pages/product.html
+new file mode 100644
+index 0000000000000000000000000000000000000000..89f7e18bd7f00ea8443a738d5fb8ed4102ed33a4
+--- /dev/null
++++ b/src/pages/product.html
+@@ -0,0 +1,45 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8" />
++  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
++  <title>Eagle Shop - Product</title>
++  <meta name="description" content="Sample product details" />
++  <meta property="og:title" content="Eagle Shop - Product" />
++  <meta property="og:description" content="Sample product details" />
++  <meta property="og:type" content="website" />
++  <meta property="og:url" content="https://example.com/product" />
++  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Eagle+Shop" />
++  <script src="https://cdn.tailwindcss.com"></script>
++  <script>
++    tailwind.config = {
++      theme: {
++        extend: {
++          colors: {
++            dark: '#42342F',
++            light: '#E8E8ED',
++            accent: '#E39D4C'
++          }
++        }
++      }
++    }
++  </script>
++  <link rel="stylesheet" href="../styles/style.css" />
++</head>
++<body>
++<div id="header"></div>
++<main class="max-w-6xl mx-auto p-4">
++  <div class="grid md:grid-cols-2 gap-6">
++    <img src="https://via.placeholder.com/600x400" alt="Sample product" class="w-full h-auto" />
++    <div>
++      <h1 class="text-3xl mb-4">Sample Product</h1>
++      <p class="mb-4">High quality sample product.</p>
++      <p class="text-2xl mb-4">$19.99</p>
++      <button id="add-to-cart" class="btn-primary">Add to Cart</button>
++    </div>
++  </div>
++</main>
++<div id="footer"></div>
++<script src="../components/app.js"></script>
++</body>
++</html>
+diff --git a/src/styles/style.css b/src/styles/style.css
+new file mode 100644
+index 0000000000000000000000000000000000000000..9867f56daa55da4926400c85c0b0c2e4a9ce5bbd
+--- /dev/null
++++ b/src/styles/style.css
+@@ -0,0 +1,18 @@
++:root {
++  --color-dark: #42342F;
++  --color-light: #E8E8ED;
++  --color-accent: #E39D4C;
++  --color-white: #FFFFFF;
++}
++
++body {
++  background-color: var(--color-light);
++  color: var(--color-dark);
++}
++
++.btn-primary {
++  background-color: var(--color-accent);
++  color: var(--color-white);
++  padding: 0.5rem 1rem;
++  border-radius: 0.25rem;
++}

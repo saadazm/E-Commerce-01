@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eagle Shop - Cart</title>
+  <meta name="description" content="Items in your cart" />
+  <meta property="og:title" content="Eagle Shop - Cart" />
+  <meta property="og:description" content="Items in your cart" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com/cart" />
+  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Eagle+Shop" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            dark: '#42342F',
+            light: '#E8E8ED',
+            accent: '#E39D4C'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+<div id="header"></div>
+<main class="max-w-6xl mx-auto p-4">
+  <h1 class="text-3xl mb-4">Your Cart</h1>
+  <ul id="cart-items" class="mb-4"></ul>
+  <a href="checkout.html" class="btn-primary">Checkout</a>
+</main>
+<div id="footer"></div>
+<script src="js/app.js"></script>
+</body>
+</html>

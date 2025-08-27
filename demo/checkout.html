@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eagle Shop - Checkout</title>
+  <meta name="description" content="Checkout form" />
+  <meta property="og:title" content="Eagle Shop - Checkout" />
+  <meta property="og:description" content="Checkout form" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com/checkout" />
+  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Eagle+Shop" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            dark: '#42342F',
+            light: '#E8E8ED',
+            accent: '#E39D4C'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+<div id="header"></div>
+<main class="max-w-2xl mx-auto p-4">
+  <h1 class="text-3xl mb-4">Checkout</h1>
+  <form class="space-y-4">
+    <div>
+      <label for="name" class="block mb-1">Name</label>
+      <input id="name" type="text" class="w-full p-2 border rounded" required />
+    </div>
+    <div>
+      <label for="email" class="block mb-1">Email</label>
+      <input id="email" type="email" class="w-full p-2 border rounded" required />
+    </div>
+    <div>
+      <label for="address" class="block mb-1">Address</label>
+      <textarea id="address" class="w-full p-2 border rounded" required></textarea>
+    </div>
+    <button type="submit" class="btn-primary">Place Order</button>
+  </form>
+</main>
+<div id="footer"></div>
+<script src="js/app.js"></script>
+</body>
+</html>
